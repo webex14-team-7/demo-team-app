@@ -5,7 +5,7 @@
     <img
       class="quiz-image"
       src="https://via.placeholder.com/300x300"
-      alt="クイズタイトル"
+      alt="お土産クイズ"
     />
     <div class="container">
       <button v-on:click="choice(0)">
@@ -24,13 +24,13 @@
 
 <script>
 export default {
-  data {
+  data () {
     return {
       feedback: "",
       quiz :{
         text : "このおみやげは何県の名物でしょう",
-        image :
-        choices : [
+        image : "気になるリンゴ.jpg",
+        choices :[
           {
            text:"青森県",
            isCorrect: True ,
@@ -39,7 +39,7 @@ export default {
           {
             text:"沖縄県",
             isCorrect:false,
-            feedback:"残念！沖縄県は元祖紅いもタルトが有名だね。"
+            feedback:"残念！沖縄県は元祖紅いもタルトが有名だね。",
           },
           {
             text:"埼玉県",
@@ -51,9 +51,10 @@ export default {
      },
     },
   methods:{
-    choiced(i)
+    choiced(i){
     this.feedback=this.quiz.choice[i].text
   }
+}
 }
 </script>
 
