@@ -1,29 +1,60 @@
 <template>
   <h1>Vue クイズ</h1>
   <div class="app">
-    <h2>Q. {{ "クイズタイトル" }}</h2>
+    <h2>Q. {{ quiz.text }}</h2>
     <img
       class="quiz-image"
       src="https://via.placeholder.com/300x300"
       alt="クイズタイトル"
     />
     <div class="container">
-      <button>
-        {{ "選択肢1" }}
+      <button v-on:click="choice(0)">
+        {{ quiz.choices[0].text }}
       </button>
-      <button>
-        {{ "選択肢2" }}
+      <button v-on:click="choice(1)">
+        {{ quiz.choices[1].text }}
       </button>
-      <button>
-        {{ "選択肢3" }}
+      <button v-on:click="choice(2)">
+        {{ quiz.choices[2].text }}
       </button>
     </div>
-    <div>{{ "答え" }}</div>
+    <div>{{ feedback }}</div>
   </div>
 </template>
 
 <script>
-export default {}
+export default {
+  data {
+    return {
+      feedback: "",
+      quiz :{
+        text : "このおみやげは何県の名物でしょう",
+        image :
+        choices : [
+          {
+           text:"青森県",
+           isCorrect: True ,
+           feedback: "正解！青森県の「気になるリンゴ」は中に丸ごと焼きりんごが入っているよ。" ,
+          },
+          {
+            text:"沖縄県",
+            isCorrect:false,
+            feedback:"残念！沖縄県は元祖紅いもタルトが有名だね。"
+          },
+          {
+            text:"埼玉県",
+            isCorrect:false,
+            feedback:"残念！埼玉県は十万石まんじゅうが有名だね。"
+          },
+        ],
+      },
+     },
+    },
+  methods:{
+    choiced(i)
+    this.feedback=this.quiz.choice[i].text
+  }
+}
 </script>
 
 <style>
