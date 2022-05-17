@@ -2,11 +2,12 @@
   <h1>Vue メモ</h1>
   <div class="memo-list">
     <ul class="memo-list__container">
-      <li v-for="memo in memos" v-bind:key="memo" class="memo">
+      <li v-for="(memo, index) in memos" v-bind:key="memo" class="memo">
         <div class="memo__checkbox">
-          <input type="checkbox" />
+          <input type="checkbox" v-model="memo.done" />
         </div>
-        <div class="memo__text">{{ memo.text }}</div>
+        <div v-if="memo.done" class="memo__text--done">{{ memo.text }}</div>
+        <div v-else class="memo__text">{{ memo.text }}</div>
         <button class="memo__delete" v-on:click="delateMemo(index)">
           削除
         </button>
@@ -27,12 +28,15 @@ export default {
       memos: [
         {
           text: "ひき肉を300g買う",
+          done: false,
         },
         {
           text: "ホウレンソウを1束買う",
+          done: false,
         },
         {
           text: "ピーマンを2個買う",
+          done: false,
         },
       ],
     }
@@ -40,8 +44,9 @@ export default {
   methods: {
     addMemo() {
       if (this.inputValue !== "") {
-        const memo = { text: this.inputValue }
+        const memo = { text: this.inputValue, done: false }
         this.memos.push(memo)
+        this.inputValue = ""
       }
     },
     delateMemo(index) {
