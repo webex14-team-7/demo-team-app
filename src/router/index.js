@@ -3,7 +3,7 @@ import HomeView from "../views/HomeView.vue"
 import MemoApp from "@/views/MemoApp.vue"
 import QuizApp from "@/views/QuizApp.vue"
 import PaletteApp from "@/views/PaletteApp.vue"
-import Prefecture from "@/vies/Prefecture.vue"
+import PrefectureApp from "@/views/PrefectureApp.vue"
 
 const routes = [
   {
@@ -29,7 +29,7 @@ const routes = [
   {
     path: "/prefecture",
     name: "Prefecture",
-    component: Prefecture,
+    component: PrefectureApp,
   },
 ]
 
