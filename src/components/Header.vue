@@ -29,6 +29,12 @@
         class="navigation__link"
         exact-active-class="navigation__link--exact-active"
         >Vue メモ</router-link
+      >|
+      <router-link
+        to="/prefecture"
+        class="navigation__link"
+        exact-active-class="navigation__link--exact-active"
+        >Vue 都道府県</router-link
       >
     </nav>
   </header>
