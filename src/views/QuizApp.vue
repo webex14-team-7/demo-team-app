@@ -9,17 +9,17 @@
     />
     <div class="container">
       <button v-on:click="choiced(0)">
-        {{ quiz.choices[0].text }}
+        {{ format.quizes[quizNumber].choices[0].text }}
       </button>
       <button v-on:click="choiced(1)">
-        {{ quiz.choices[1].text }}
+        {{ format.quizes[quizNumber].choices[1].text }}
       </button>
       <button v-on:click="choiced(2)">
-        {{ quiz.choices[2].text }}
+        {{ format.quizes[quizNumber].choices[2].text }}
       </button>
     </div>
     <div>{{ feedback }}</div>
-    <button id="hidden" v-on:click="changeQuiz">次の問題へ</button>>
+    <button v-if="seen">次の問題へ</button>>
   </div>
 </template>
 
@@ -28,6 +28,8 @@ export default {
   data() {
     return {
       feedback: "",
+      quizNumber: 0,
+      seen: false,
       format: {
         text: "このおみやげは何県の名物でしょう",
         quizes: [
@@ -78,7 +80,11 @@ export default {
   },
   methods: {
     choiced(i) {
-      this.feedback = this.quiz.choices[i].feedback
+      this.seen = true
+      this.feedback = this.format.quizes[this.quizNumber].choices[i].feedback
+    },
+    changeQuiz() {
+      this.quizNumber += 1
     },
   },
 }
