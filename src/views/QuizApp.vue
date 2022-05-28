@@ -19,6 +19,7 @@
       </button>
     </div>
     <div>{{ feedback }}</div>
+    <button id="hidden" v-on:click="changeQuiz">次の問題へ</button>>
   </div>
 </template>
 
@@ -27,24 +28,49 @@ export default {
   data() {
     return {
       feedback: "",
-      quiz: {
+      format: {
         text: "このおみやげは何県の名物でしょう",
-        choices: [
+        quizes: [
           {
-            text: "青森県",
-            isCorrect: true,
-            feedback:
-              "正解！青森県の「気になるリンゴ」は中に丸ごと焼きりんごが入っているよ。",
+            image: "気になるリンゴ.jpg",
+            choices: [
+              {
+                text: "青森県",
+                isCorrect: true,
+                feedback:
+                  "正解！青森県の「気になるリンゴ」は中に丸ごと焼きりんごが入っているよ。",
+              },
+              {
+                text: "沖縄県",
+                isCorrect: false,
+                feedback: "残念！沖縄県は元祖紅いもタルトが有名だね。",
+              },
+              {
+                text: "埼玉県",
+                isCorrect: false,
+                feedback: "残念！埼玉県は十万石まんじゅうが有名だね。",
+              },
+            ],
           },
           {
-            text: "沖縄県",
-            isCorrect: false,
-            feedback: "残念！沖縄県は元祖紅いもタルトが有名だね。",
-          },
-          {
-            text: "埼玉県",
-            isCorrect: false,
-            feedback: "残念！埼玉県は十万石まんじゅうが有名だね。",
+            image: "桔梗信玄餅.jpg",
+            choices: [
+              {
+                text: "福岡県",
+                isCorrect: false,
+                feedback: "残念！県は福岡は博多とおりもんが有名だね。",
+              },
+              {
+                text: "北海道",
+                isCorrect: false,
+                feedback: "残念！北海道は白い恋人が有名だね。",
+              },
+              {
+                text: "山梨県",
+                isCorrect: true,
+                feedback: "正解！山梨県は桔梗信玄餅が有名だよ。",
+              },
+            ],
           },
         ],
       },
